@@ -47,15 +47,21 @@ def get_build_keys(product_config):
 
 def override_config(config):
   if "PRODUCT_BUILD_PROP_OVERRIDES" in config:
-    props_overrides = config["PRODUCT_BUILD_PROP_OVERRIDES"]
-    for override in props_overrides:
-      # The format is config['KEY']=VALUE
-      # Since VALUE can't contain spaces, those are replaced by [[:space:]]
-      key, value = override.split('=')
+    current_key = None
+    props_overrides = {}
+
+    for var in config["PRODUCT_BUILD_PROP_OVERRIDES"]:
+      if "=" in var:
+        current_key, value = var.split("=")
+        props_overrides[current_key] = value
+      else:
+        props_overrides[current_key] += f" {var}"
+
+    for key, value in props_overrides.items():
       if key not in config:
         print(f"Key \"{key}\" isn't a valid prop override", file=sys.stderr)
         sys.exit(1)
-      config[key] = value.replace('[[:space:]]', ' ')
+      config[key] = value
 
 def parse_args():
   """Parse commandline arguments."""
