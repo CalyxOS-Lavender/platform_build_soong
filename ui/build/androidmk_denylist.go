@@ -35,9 +35,11 @@ var androidmk_denylist []string = []string{
 	"kernel/tests/",
 	"libcore/",
 	"libnativehelper/",
-	"packages/",
+	// Add back packages/ once aurora and frdoid privileged extensions get removed
+	// and SystemUpdater replaces Updater
+	//"packages/",
 	"pdk/",
-	// Add back prebuilts/ once chromium and fdroid are migrated
+	// Add back prebuilts/ once chromium, fdroid and microg are migrated
 	//"prebuilts/",
 	"sdk/",
 	"test/",
