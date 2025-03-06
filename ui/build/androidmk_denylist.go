@@ -46,7 +46,8 @@ var androidmk_denylist []string = []string{
 	// Add back prebuilts/ once chromium, fdroid and microg are migrated
 	//"prebuilts/",
 	"sdk/",
-	"system/",
+	// Add back system/ once chre is migrated
+	//"system/",
 	"test/",
 	"trusty/",
 	// Add back toolchain/ once defensive Android.mk files are removed
