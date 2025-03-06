@@ -461,6 +461,19 @@ func TestPrebuiltPrebuiltUserIdcInstallDirPath(t *testing.T) {
 	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPaths[0])
 }
 
+func TestPrebuiltFdroidInstallDirPath(t *testing.T) {
+	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
+		prebuilt_fdroid {
+			name: "foo.conf",
+			src: "foo.conf",
+		}
+	`)
+
+	p := result.Module("foo.conf", "android_common").(*PrebuiltEtc)
+	expected := "out/soong/target/product/test_device/system/fdroid"
+	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPaths[0])
+}
+
 func TestPrebuiltFontInstallDirPath(t *testing.T) {
 	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
 		prebuilt_font {
