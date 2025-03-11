@@ -43,8 +43,7 @@ var androidmk_denylist []string = []string{
 	//"packages/",
 	"pdk/",
 	"platform_testing/",
-	// Add back prebuilts/ once chromium, fdroid and microg are migrated
-	//"prebuilts/",
+	"prebuilts/",
 	"sdk/",
 	"system/",
 	"test/",
