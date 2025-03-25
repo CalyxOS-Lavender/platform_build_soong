@@ -200,7 +200,6 @@ var (
 		"firmware":            etc.PrebuiltFirmwareFactory,
 		"gpu":                 etc.PrebuiltGPUFactory,
 		"first_stage_ramdisk": etc.PrebuiltFirstStageRamdiskFactory,
-		"fdroid":              etc.PrebuiltFdroidFactory,
 		"fonts":               etc.PrebuiltFontFactory,
 		"framework":           etc.PrebuiltFrameworkFactory,
 		"lib":                 etc.PrebuiltRenderScriptBitcodeFactory,

@@ -60,7 +60,6 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_usr_keychars", PrebuiltUserKeyCharsFactory)
 	ctx.RegisterModuleType("prebuilt_usr_idc", PrebuiltUserIdcFactory)
 	ctx.RegisterModuleType("prebuilt_usr_srec", PrebuiltUserSrecFactory)
-	ctx.RegisterModuleType("prebuilt_fdroid", PrebuiltFdroidFactory)
 	ctx.RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
 	ctx.RegisterModuleType("prebuilt_overlay", PrebuiltOverlayFactory)
 	ctx.RegisterModuleType("prebuilt_firmware", PrebuiltFirmwareFactory)
@@ -781,16 +780,6 @@ func PrebuiltUserSrecFactory() android.Module {
 	InitPrebuiltEtcModule(module, "usr/srec")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
-	android.InitDefaultableModule(module)
-	return module
-}
-
-// prebuilt_fdroid installs a file in <partition>/fdroid directory.
-func PrebuiltFdroidFactory() android.Module {
-	module := &PrebuiltEtc{}
-	InitPrebuiltEtcModule(module, "fdroid")
-	// This module is device-only
-	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	return module
 }
